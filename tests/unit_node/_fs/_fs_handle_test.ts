@@ -205,8 +205,8 @@ Deno.test("chmod", async function () {
   await fileHandle.chmod(0o666);
   const info1 = await Deno.stat(testData);
   assertEquals(info1.mode?.toString(8), `100666`);
-  await fileHandle.chmod(0o555);
+  await fileHandle.chmod(0o444);
   const info2 = await Deno.stat(testData);
-  assertEquals(info2.mode?.toString(8), `100555`);
+  assertEquals(info2.mode?.toString(8), `100444`);
   await fileHandle.close();
 });
